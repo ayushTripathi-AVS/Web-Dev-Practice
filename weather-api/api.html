@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="api.css">
+    <link rel="icon" type="image/png" href="../images/weatherIcon.png">
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <h2><i class="fa fa-map-marker"></i><span id="location"></span></h2>
+            <h5 id="weather">Click refresh to get the weather data</h5>
+            <h4><span id="temp"></span><sup>o</sup>C</h4>
+            <img src="" id="icon">
+            <button onclick="getWeather()" class="refresh"><i class="fa fa-refresh"></i></button>
+        </div>
+    </div>
+
+    <script>
+        function getWeather() {
+            var location = prompt("Enter a location:");
+            if (location) {
+                var apiKey = "115b9d3b0dff946ed6ab7dde57bea7fe";
+                var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + location + "&appid=" + apiKey;
+
+                var request = new XMLHttpRequest();
+                request.open('GET', apiUrl, true);
+                request.onload = function () {
+                    if (request.status >= 200 && request.status < 400) {
+                        var obj = JSON.parse(this.response);
+                        console.log(obj);
+                        document.getElementById('weather').innerHTML = obj.weather[0].description;
+                        document.getElementById('location').innerHTML = " " + obj.name;
+                        document.getElementById('temp').innerHTML = Math.round(obj.main.temp - 273.15);
+                        document.getElementById('icon').src = "https://openweathermap.org/img/w/" + obj.weather[0].icon + ".png";
+                    } else {
+                        var errorMessage = "The city data is not available";
+                        document.getElementById('weather').innerHTML = "";
+                        document.getElementById('location').innerHTML = "";
+                        document.getElementById('temp').innerHTML = "";
+                        document.getElementById('icon').src = "";
+                        //alert(errorMessage); 
+                        //Can also use the alert method
+                        document.getElementById('weather').innerHTML = errorMessage;
+                    }
+                }
+                request.send();
+            }
+        }
+    </script>
+</body>
+
+</html>
