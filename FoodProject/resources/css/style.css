@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 
+body,
 html{
     background-color: #ffffff;
     color: #555;
@@ -11,6 +12,7 @@ html{
     font-weight: 300;
     font-size: 20px;
     text-rendering: optimizeLegibility;
+    overflow-x: hidden;
 }
 
 .row{
@@ -40,7 +42,7 @@ h1{
 .hero-text-box{
     position: absolute;
     width: 1140px;
-    top:50%;
+    top:35%;
     left:50%;
     transform: translate(-50%,50%);
 }
@@ -225,7 +227,6 @@ h3{
     text-align: center;
     padding: 5px;
     margin-right: 25px;
-    float: left;
     font-size: 150%;
 }
 .works-step:last-of-type{
@@ -372,4 +373,56 @@ textarea{
 }
 input[type=checkbox]{
     margin: 10px 5px 10px 0;
+}
+footer{
+    background-color: #333;
+    font-size: 80%;
+    padding: 50px;
+}
+.footer-nav{
+    list-style: none;
+    float: left;
+}
+.social-links{
+    list-style: none;
+    float: right;
+}
+.footer-nav li,
+.social-links li{
+    display: inline-block;
+    margin-right: 20px;
+}
+.footer-nav li a:link,
+.footer-nav li a:visited,
+.social-links li a:link,
+.social-links li a:visited{
+    text-decoration: none;
+    border:0;
+    color: #888;
+}
+.footer-nav li a:hover,
+.footer-nav li a:hover{
+    color: #ddd;
+}
+footer p{
+    color: #888;
+    text-align: center;
+    font-size: 90%;
+    margin-top: 20px;
+}
+.fb:hover{
+    color: #3b5998;
+}
+.google:hover{
+    color:#dd4b39;
+}
+.twitter:hover{
+    color:#00aced;
+}
+.insta:hover{
+    color: #517fa4;
+}
+.social-links li a:link,
+.social-links li a:visited{
+    font-size: 160%;
 }
