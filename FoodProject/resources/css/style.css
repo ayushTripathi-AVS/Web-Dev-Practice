@@ -226,6 +226,7 @@ h3{
     width: 55px;
     text-align: center;
     padding: 5px;
+    float:left;
     margin-right: 25px;
     font-size: 150%;
 }
