@@ -11,12 +11,14 @@
         <h1>To Do List</h1>
     </div>
     <div class="box">
-        <% for(var i = 0; i < items.length; i++) { %> <!-- Loop through the 'ejes' array -->
-            <div class="item">
-                <input type="checkbox">
-                <p><%= items[i] %></p> <!-- Display each item from the 'ejes' array -->
-            </div>     
-        <% } %>
+        <% items.forEach(function(items){ %>
+            <form action="/delete" method="POST">
+                <div class="item">
+                    <input type="checkbox" name="checkbox1" value="<%= items._id %>" onchange="this.form.submit()">
+                    <p><%= items.name %></p> 
+                </div>  
+            </form>
+        <% }) %> 
         <form action="/" method="POST"> <!-- Form for adding new tasks -->
             <input type="text" name="ele1" placeholder="Enter the task">
             <button type="submit">+</button>
